@@ -6,10 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-<a href="/">Главная</a>
-<a href="/about">О нас</a>
-<a href="#">Новости</a>
-<br>
+<?php
+include "menu.php";
+?>
 Горячие новости
+<?php /** @var array $news */
+foreach ($news as $article):?>
+    <a href="<?=route('news',$article['id'])?>"><?=$article['title']?></a>
+<?php endforeach?>
 </body>
 </html>
