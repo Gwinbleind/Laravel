@@ -1,3 +1,7 @@
+<?php
+/** @var array $news */
+/** @var array $category */
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,9 +13,8 @@
 <?php
 include "menu.php";
 ?>
-<p>Горячие новости</p>
-<?php /** @var array $news */
-foreach ($news as $article):?>
+<p>Новости в категории <?=$category['name']?></p>
+<?php foreach ($news as $article):?>
     <a href="<?=route('news.oneArticle',$article['id'])?>">
         <?=$article['title']?>
     </a>

@@ -21,19 +21,24 @@ Route::get('/',[HomeController::class,'index'])
 
 Route::name('admin.')
     ->prefix('admin')
-    ->namespace('Admin')->group(function () {
+    ->namespace('Admin')
+    ->group(function () {
         Route::get('/',[IndexController::class,'index'])
             ->name('home');
 });
 
-Route::name('news')
+Route::name('news.')
     ->prefix('news')
     ->group(function() {
         Route::get('/',[NewsController::class,'index'])
-            ->name('All');
-        Route::get('/{id}',[NewsController::class,'show'])
+            ->name('all');
+        Route::get('/{id}',[NewsController::class,'showArticle'])
             ->where('id', '[0-9]+')
-            ->name('One');
+            ->name('oneArticle');
+        Route::get('/category/{id}',[NewsController::class,'showNewsByCategory'])
+            ->name('byCategory');
+        Route::get('/category',[NewsController::class,'showCategories'])
+            ->name('categories');
 });
 
 Route::view('/about', 'about')

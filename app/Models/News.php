@@ -13,12 +13,14 @@ class News extends Model
         1 => [
             'id'=>'1',
             'title'=>'News1',
-            'body'=>'Text of first artycle'
+            'category_id'=>1,
+            'body'=>'Text of first article'
         ],
         2 => [
             'id'=>'2',
             'title'=>'News2',
-            'body'=>'Text of second artycle'
+            'category_id'=>2,
+            'body'=>'Text of second article'
         ]
     ];
 
@@ -26,8 +28,19 @@ class News extends Model
         return self::$news;
     }
 
-    public static function getOneArticle(int $id)
+    public static function getArticleById(int $id)
     {
         return self::$news[$id];
+    }
+
+    public static function getNewsByCategory(int $id)
+    {
+        $result = [];
+        foreach (self::$news as $item) {
+            if ($item['category_id'] == $id) {
+                $result[] = $item;
+            }
+        }
+        return $result;
     }
 }
