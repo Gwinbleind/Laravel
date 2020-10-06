@@ -1,3 +1,5 @@
+<?php /** @var array $article */
+?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,10 +8,11 @@
     <title>Document</title>
 </head>
 <body>
-<a href="/">Главная</a>
-<a href="/about">О нас</a>
-<a href="#">Новости</a>
-<br>
-Горячие новости
+<?php
+include "menu.php";
+?>
+Новость № <?=$article['id']?>
+<h2><?=$article['title']?></h2>
+<?=$article['body']?>
 </body>
 </html>
