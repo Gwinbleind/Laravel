@@ -43,4 +43,13 @@ class Category extends Model
     public static function getCategoryById(int $id) {
         return self::$categories[$id];
     }
+
+    public static function getCategoryBySlug(string $slug)
+    {
+        foreach (self::$categories as $category) {
+            if ($category['slug'] == $slug)
+                return $category;
+        }
+        return null;
+    }
 }

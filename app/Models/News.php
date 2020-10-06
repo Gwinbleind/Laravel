@@ -12,15 +12,17 @@ class News extends Model
     public static $news = [
         1 => [
             'id'=>'1',
-            'title'=>'News1',
+            'title'=>'Путин в Африке',
             'category_id'=>1,
-            'body'=>'Text of first article'
+            'slug'=>'putin_at_africa',
+            'body'=>'Представьте себе, Путин в Африке!'
         ],
         2 => [
             'id'=>'2',
-            'title'=>'News2',
+            'title'=>'Новая картина на миллиард',
             'category_id'=>2,
-            'body'=>'Text of second article'
+            'slug'=>'new_art_for_milliard',
+            'body'=>'Кто-то снова купил картину за миллиард!'
         ]
     ];
 
@@ -31,6 +33,14 @@ class News extends Model
     public static function getArticleById(int $id)
     {
         return self::$news[$id];
+    }
+
+    public static function getArticleBySlug(string $slug)
+    {
+        foreach (self::$news as $item) {
+            if ($item['slug'] == $slug) return $item;
+        }
+        return [];
     }
 
     public static function getNewsByCategory(int $id)

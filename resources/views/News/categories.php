@@ -9,13 +9,13 @@
 <?php
 include "menu.php";
 ?>
-<p>Горячие новости</p>
-<?php /** @var array $news */
-foreach ($news as $article):?>
-    <a href="<?=route('news.oneArticle',$article['id'])?>">
-        <?=$article['title']?>
+<p>Категории</p>
+<?php /** @var array $categories */
+foreach ($categories as $category):?>
+    <a href="<?=route('news.byCategory',$category['slug'])?>">
+        <?=$category['name']?>
     </a>
     <br>
-<?php endforeach?>
+<?php endforeach;?>
 </body>
 </html>

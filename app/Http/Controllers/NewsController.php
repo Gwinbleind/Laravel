@@ -10,26 +10,27 @@ class NewsController extends Controller
 {
     public function index()
     {
-        return view('news')
+        return view('News.all')
             ->with('news',News::getNews());
     }
 
-    public function showArticle(int $id)
+    public function showArticle($slug)
     {
-        return view('article')
-            ->with('article', News::getArticleById($id));
+        return view('News.article')
+            ->with('article',News::getArticleBySlug($slug));
     }
 
-    public function showNewsByCategory($id)
+    public function showNewsByCategory(string $slug)
     {
-        return view('newsAtCategory')
-            ->with('news',News::getNewsByCategory($id))
-            ->with('category',Category::getCategoryById($id));
+        $category = Category::getCategoryBySlug($slug);
+        return view('News.atCategory')
+            ->with('news',News::getNewsByCategory($category['id']))
+            ->with('category',$category);
     }
 
     public function showCategories()
     {
-        return view('categories')
+        return view('News.categories')
             ->with('categories',Category::getCategories());
     }
 }

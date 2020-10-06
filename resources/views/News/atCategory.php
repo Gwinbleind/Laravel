@@ -1,5 +1,4 @@
 <?php
-/** @var array $news */
 /** @var array $category */
 ?>
 <!doctype html>
@@ -13,12 +12,9 @@
 <?php
 include "menu.php";
 ?>
-<p>Новости в категории <?=$category['name']?></p>
-<?php foreach ($news as $article):?>
-    <a href="<?=route('news.oneArticle',$article['id'])?>">
-        <?=$article['title']?>
-    </a>
-    <br>
-<?php endforeach?>
+<p>Новости в категории "<?=$category['name']?>"</p>
+<?php
+include 'newsBlock.php';
+?>
 </body>
 </html>

@@ -32,14 +32,14 @@ Route::name('news.')
     ->group(function() {
         Route::get('/',[NewsController::class,'index'])
             ->name('all');
-        Route::get('/{id}',[NewsController::class,'showArticle'])
-            ->where('id', '[0-9]+')
-            ->name('oneArticle');
-        Route::get('/category/{id}',[NewsController::class,'showNewsByCategory'])
+        Route::get('/category/{slug}',[NewsController::class,'showNewsByCategory'])
             ->name('byCategory');
         Route::get('/category',[NewsController::class,'showCategories'])
             ->name('categories');
-});
+        Route::get('/{slug}',[NewsController::class,'showArticle'])
+            ->where('slug', '[A-Za-z_0-9]+')
+            ->name('oneArticle');
+    });
 
 Route::view('/about', 'about')
     ->name('about');
