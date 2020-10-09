@@ -1,5 +1,3 @@
-<?php
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,7 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-<h2>Error 404: Page not found</h2>
-<a href="<?=route('home')?>">На главную</a>
+@include ("menu")
+<p>Категории</p>
+@foreach ($categories as $category):?>
+    <a href="{{route('news.byCategory',$category['slug'])}}">
+        {{$category['name']}}
+    </a>
+    <br>
+@endforeach
 </body>
 </html>

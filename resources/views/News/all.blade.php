@@ -1,6 +1,3 @@
-<?php
-/** @var array $category */
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -9,12 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-<?php
-include "menu.php";
-?>
-<p>Новости в категории "<?=$category['name']?>"</p>
-<?php
-include 'newsBlock.php';
-?>
+@include ("menu")
+<p>Горячие новости</p>
+@include ('News.newsBlock')
 </body>
 </html>

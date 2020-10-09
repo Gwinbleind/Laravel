@@ -6,9 +6,7 @@
     <title>Главная</title>
 </head>
 <body>
-<?php
-include "menu.php";
-?>
+@include ("menu")
 Главная страница сайта
 </body>
 </html>

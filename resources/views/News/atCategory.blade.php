@@ -6,10 +6,8 @@
     <title>Document</title>
 </head>
 <body>
-<a href="/">Главная</a>
-<a href="#">О нас</a>
-<a href="/news">Новости</a>
-<br>
-Информация о сайте
+@include ("menu")
+<h2>Новости в категории "{{$category['name']}}"</h2>
+@include ('News.newsBlock')
 </body>
 </html>

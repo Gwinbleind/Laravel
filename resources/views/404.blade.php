@@ -1,5 +1,3 @@
-<?php /** @var array $article */
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -8,11 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-<?php
-include "menu.php";
-?>
-Новость № <?=$article['id']?>
-<h2><?=$article['title']?></h2>
-<?=$article['body']?>
+<h2>Error 404: Page not found</h2>
+<a href="{{route('home')}}">На главную</a>
 </body>
 </html>

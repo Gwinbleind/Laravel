@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\News;
-use Illuminate\Http\Request;
-use function PHPUnit\Framework\isEmpty;
 
 class NewsController extends Controller
 {
@@ -18,10 +16,8 @@ class NewsController extends Controller
     public function showArticle($slug)
     {
         $article = News::getArticleBySlug($slug);
-        if ($article !== [])
-            return view('News.article')
-                ->with('article', $article);
-        else return view('404');
+        return view('News.article')
+            ->with('article', $article);
     }
 
     public function showNewsByCategory(string $slug)
