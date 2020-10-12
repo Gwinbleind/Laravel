@@ -1,18 +1,19 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-@include ("menu")
-<p>Категории</p>
-@foreach ($categories as $category):?>
-    <a href="{{route('news.byCategory',$category['slug'])}}">
-        {{$category['name']}}
-    </a>
-    <br>
-@endforeach
-</body>
-</html>
+@extends('layouts.main')
+
+@section('title')
+    Категории
+@endsection
+
+@section('menu')
+    @include ("menu")
+@endsection
+
+@section('content')
+    <h3>Категории</h3>
+    @foreach ($categories as $category)
+        <a href="{{route('news.byCategory',$category['slug'])}}">
+            {{$category['name']}}
+        </a>
+        <br>
+    @endforeach
+@endsection
