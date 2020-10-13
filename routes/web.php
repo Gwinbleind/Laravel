@@ -44,4 +44,5 @@ Route::name('news.')
 Route::view('/about', 'about')
     ->name('about');
 
+Route::view('/vue','vue')->name('vue');
 Route::view('/test','welcome');
