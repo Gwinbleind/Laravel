@@ -36,6 +36,8 @@ Route::name('news.')
             ->name('byCategory');
         Route::get('/category',[NewsController::class,'showCategories'])
             ->name('categories');
+        Route::view('/add','news.add')
+            ->name('add');
         Route::get('/{slug}',[NewsController::class,'showArticle'])
             ->where('slug', '[A-Za-z_0-9]+')
             ->name('oneArticle');
@@ -46,4 +48,4 @@ Route::view('/about', 'about')
 
 Route::view('/vue','vue')->name('vue');
 Route::view('/test','welcome');
-Route::view('auth','auth')->name('auth');
+Route::view('/auth','auth')->name('auth');

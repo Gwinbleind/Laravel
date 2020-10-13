@@ -1,8 +1,6 @@
 @extends('layouts.main')
 
-@section('title')
-    Главная
-@endsection
+@section('title','Главная')
 
 @section('menu')
     @include ("menu")
