@@ -46,3 +46,4 @@ Route::view('/about', 'about')
 
 Route::view('/vue','vue')->name('vue');
 Route::view('/test','welcome');
+Route::view('auth','auth')->name('auth');
