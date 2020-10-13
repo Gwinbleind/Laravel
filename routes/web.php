@@ -25,6 +25,8 @@ Route::name('admin.')
     ->group(function () {
         Route::get('/',[IndexController::class,'index'])
             ->name('home');
+        Route::match(['get','post'],'/add',[NewsController::class,'create'])
+            ->name('add');
 });
 
 Route::name('news.')
@@ -36,8 +38,6 @@ Route::name('news.')
             ->name('byCategory');
         Route::get('/category',[NewsController::class,'showCategories'])
             ->name('categories');
-        Route::view('/add','news.add')
-            ->name('add');
         Route::get('/{slug}',[NewsController::class,'showArticle'])
             ->where('slug', '[A-Za-z_0-9]+')
             ->name('oneArticle');

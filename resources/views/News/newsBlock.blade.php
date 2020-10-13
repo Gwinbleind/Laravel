@@ -1,8 +1,11 @@
-@forelse ($news as $article)
-    <a href="{{route('news.oneArticle',$article['slug'])}}">
+<nav class="nav">
+    @forelse ($news as $article)
+    <a class="nav-link {{ $article['private']?'disabled':'' }}"
+       href="{{route('news.oneArticle',$article['slug'])}}">
         {{$article['title']}}
     </a>
-    <br>
+</nav>
+<br>
 @empty
     <h3 class="mt-3">Новости кончились</h3>
     <a href="{{route('home')}}">На главную</a>

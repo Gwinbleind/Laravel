@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\News;
+use Illuminate\Http\Request as Request;
 
 class NewsController extends Controller
 {
@@ -33,6 +34,16 @@ class NewsController extends Controller
     public function showCategories()
     {
         return view('News.categories')
+            ->with('categories',Category::getCategories());
+    }
+
+    public function create(Request $request)
+    {
+        if ($request->isMethod('post')) {
+            $request->flash();
+            return redirect()->route('admin.add');
+        }
+        return view('Admin.add')
             ->with('categories',Category::getCategories());
     }
 }
