@@ -9,5 +9,5 @@
 @endsection
 
 @section('content')
-    <h3>Главная страница сайта</h3>
+    <p class="lead">Главная страница сайта</p>
 @endsection

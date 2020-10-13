@@ -7,5 +7,5 @@
 @endsection
 
 @section('content')
-    <h3>Информация о сайте</h3>
+    <p class="lead">Информация о сайте</p>
 @endsection

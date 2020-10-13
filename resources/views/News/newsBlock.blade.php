@@ -4,6 +4,6 @@
     </a>
     <br>
 @empty
-    <h3>Новости кончились</h3>
+    <h3 class="mt-3">Новости кончились</h3>
     <a href="{{route('home')}}">На главную</a>
 @endforelse

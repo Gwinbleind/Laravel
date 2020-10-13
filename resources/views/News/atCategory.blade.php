@@ -9,6 +9,6 @@
 @endsection
 
 @section('content')
-    <h2>Новости в категории "{{$category['name']}}"</h2>
+    <h1 class="mt-5">Новости в категории "{{$category['name']}}"</h1>
     @include ('News.newsBlock')
 @endsection

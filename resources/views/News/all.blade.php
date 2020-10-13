@@ -9,6 +9,6 @@
 @endsection
 
 @section('content')
-    <p>Горячие новости</p>
+    <h1 class="mt-5">Горячие новости</h1>
     @include('News.newsBlock')
 @endsection

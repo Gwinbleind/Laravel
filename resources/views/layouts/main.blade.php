@@ -9,13 +9,12 @@
     <title>Страница @yield('title')</title>
 </head>
 <body>
-<div class="container-fluid">
-    <div class="d-flex p-2 bd-highlight">
-        @yield('menu')
-    </div>
+
+@yield('menu')
+<main role="main" class="flex-shrink-0">
     <div class="container">
         @yield('content')
     </div>
-</div>
+</main>
 </body>
 </html>
