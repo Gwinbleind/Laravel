@@ -1,6 +1,6 @@
 <nav class="nav">
     @forelse ($news as $article)
-    <a class="nav-link {{ $article['private']?'disabled':'' }}"
+    <a class="nav-link {{ $article['is_private']?'disabled':'' }}"
        href="{{route('news.oneArticle',$article['slug'])}}">
         {{$article['title']}}
     </a>

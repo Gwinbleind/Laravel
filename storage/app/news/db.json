@@ -1,46 +1,86 @@
 {
-    "news": {
-            "1" : {
-            "id":"1",
-            "title":"Путин в Африке",
-            "category_id":1,
-            "slug":"putin_at_africa",
-            "body":"Представьте себе, Путин в Африке!",
-            "private": 1
+    "categories": {
+        "1": {
+            "id": 1,
+            "parent_id": null,
+            "name": "Политика",
+            "slug": "politics"
         },
-        "2" : {
-            "id":"2",
-            "title":"Новая картина на миллиард",
-            "category_id":2,
-            "slug":"new_art_for_milliard",
-            "body":"Кто-то снова купил картину за миллиард!",
-            "private": 0
+        "2": {
+            "id": 2,
+            "parent_id": null,
+            "name": "Культура и Искусство",
+            "slug": "culture"
+        },
+        "3": {
+            "id": 3,
+            "parent_id": null,
+            "name": "Наука и Технологии",
+            "slug": "science"
+        },
+        "4": {
+            "id": 4,
+            "parent_id": null,
+            "name": "Происшествия",
+            "slug": "incidents"
         }
     },
-    "categories" : {
-        "1":{
-            "id":1,
-            "parent_id":null,
-            "name":"Политика",
-            "slug":"politics"
+    "news": {
+        "1": {
+            "body": "Представьте себе, Путин в Африке!",
+            "category_id": 1,
+            "id": 1,
+            "is_private": true,
+            "slug": "putin_at_africa",
+            "title": "Путин в Африке"
         },
-        "2":{
-            "id":2,
-            "parent_id":null,
-            "name":"Культура и Искусство",
-            "slug":"culture"
+        "2": {
+            "body": "Кто-то снова купил картину за миллиард!",
+            "category_id": 2,
+            "id": 2,
+            "is_private": false,
+            "slug": "new_art_for_milliard",
+            "title": "Новая картина на миллиард"
         },
-        "3":{
-            "id":3,
-            "parent_id":null,
-            "name":"Наука и Технологии",
-            "slug":"science"
+        "3": {
+            "body": "Я могу добавить новость!!",
+            "category_id": 1,
+            "id": 3,
+            "is_private": false,
+            "slug": "testovaya_novost",
+            "title": "Тестовая новость"
         },
-        "4":{
-            "id":4,
-            "parent_id":null,
-            "name":"Происшествия",
-            "slug":"incidents"
+        "4": {
+            "body": "В прошлый раз json сошел с ума, добавим опции кодирования",
+            "category_id": 4,
+            "id": 4,
+            "is_private": false,
+            "slug": "eshhe_odna_popytka",
+            "title": "Еще одна попытка"
+        },
+        "5": {
+            "title": "Проверка работы авто слагов Laravel",
+            "category_id": 3,
+            "body": "Оказывается, тире работают плохо, лучше - нижние подчеркивания",
+            "is_private": true,
+            "slug": "proverka_raboty_avto_slagov_laravel",
+            "id": 5
+        },
+        "6": {
+            "title": "Редирект тест",
+            "category_id": 3,
+            "body": "Пробуем перейти на страницу новости после ее создания",
+            "is_private": false,
+            "slug": "redirekt_test",
+            "id": 6
+        },
+        "7": {
+            "title": "Приватность",
+            "category_id": 1,
+            "body": "Проверка приватности темы после создания",
+            "is_private": true,
+            "slug": "privatnost",
+            "id": 7
         }
     }
 }

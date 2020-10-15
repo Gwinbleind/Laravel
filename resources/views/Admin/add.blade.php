@@ -3,7 +3,7 @@
 @section('title','Добавление новости')
 
 @section('menu')
-    @include ("menu")
+    @include ("admin.menu")
 @endsection
 
 @section('content')
@@ -19,7 +19,7 @@
             </div>
             <div class="form-group row">
                 <label for="articleCategory">Категория новости:</label>
-                <select class="form-control" name="category" id="articleCategory"
+                <select class="form-control" name="category_id" id="articleCategory"
                     >
                     @foreach ($categories as $category)
                         <option value="{{ $category['id'] }}" {{ ($category['id']==old('category'))?'selected':'' }}>

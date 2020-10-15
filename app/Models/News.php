@@ -39,4 +39,9 @@ class News extends Model
         }
         return $result;
     }
+
+    public static function createArticle(array $article)
+    {
+        return DB::putItemToSection('news',$article);
+    }
 }
