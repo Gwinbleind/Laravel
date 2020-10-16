@@ -1,3 +1,4 @@
+{{--@dump($news)--}}
 <nav class="nav">
     @forelse ($news as $article)
     <a class="nav-link {{ $article['is_private']?'disabled':'' }}"
