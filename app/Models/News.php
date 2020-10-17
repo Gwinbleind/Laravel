@@ -10,6 +10,29 @@ class News extends Model
 {
     use HasFactory;
 
+    private static $news = [
+        1 => [
+            'id'=>'1',
+            'title'=>'Путин в Африке',
+            'category_id'=>1,
+            "is_private"=>false,
+            'slug'=>'putin_at_africa',
+            'body'=>'Представьте себе, Путин в Африке!'
+        ],
+        2 => [
+            'id'=>'2',
+            'title'=>'Новая картина на миллиард',
+            'category_id'=>2,
+            "is_private"=>false,
+            'slug'=>'new_art_for_milliard',
+            'body'=>'Кто-то снова купил картину за миллиард!'
+        ]
+    ];
+
+    public static function getLocalNews() {
+        return self::$news;
+    }
+
     public static function getNews() {
         return DB::getSection('news');
     }

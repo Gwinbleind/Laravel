@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+
     <h1 class="mt-5">Добавление новости</h1>
     <form method="post" action="{{ route('admin.add') }}">
         <div class="form-group">

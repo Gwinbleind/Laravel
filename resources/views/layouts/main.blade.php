@@ -12,6 +12,7 @@
 @yield('menu')
 <main role="main" class="flex-shrink-0 container-fluid">
     <div class="container">
+        @yield('alert')
         @yield('content')
     </div>
 </main>

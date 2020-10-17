@@ -35,7 +35,7 @@ class DB extends Controller
             $section_data = &$json[$section];
             $item['id'] = array_key_last($section_data)+1;
             $section_data[$item['id']] = $item;
-            Storage::put(self::$json_file,json_encode($json,JSON_NUMERIC_CHECK | JSON_UNESCAPED_UNICODE));
+            Storage::put(self::$json_file,json_encode($json,JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT));
             return $item['slug'];
         }
         else return '';
