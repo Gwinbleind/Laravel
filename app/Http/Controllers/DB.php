@@ -9,6 +9,7 @@ use Illuminate\Support\Str as StrL;
 class DB extends Controller
 {
     private static $json_file='news/db.json';
+    public static $images_dir='public/images';
 
     public static function getAll()
     {
@@ -28,7 +29,14 @@ class DB extends Controller
 
     public static function putItemToSection(string $section, array $item)
     {
+//        dd($item);
         if (self::testArticleData($item)) {
+            $url = null;
+            if (request()->file('image')) {
+                $path = Storage::putFile(self::$images_dir,request()->file('image'));
+                $url = Storage::url($path);
+            }
+            $item['image'] = $url;
             $item['is_private'] = isset($item['is_private']);
             $item['slug'] = StrL::slug($item['title'],'_');
             $json = self::getAll();

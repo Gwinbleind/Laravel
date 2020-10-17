@@ -9,6 +9,7 @@
 @section('content')
     @isset($article['id'])
         <p class="lead">Новость № {{$article['id']}}</p>
+        <img src="{{ $article['image'] ?? url('storage/default_article.jpg') }}" alt="Preview image">
         <h1 class="mt-5">{{$article['title']}}</h1>
         <p class="lead">
             {{$article['body']}}

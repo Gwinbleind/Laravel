@@ -10903,6 +10903,13 @@ main > .container {
   padding-top: 60px;
 }
 
+.img-preview {
+  height: 50px;
+  width: 400px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
 html,
 body {
   height: 100%;
