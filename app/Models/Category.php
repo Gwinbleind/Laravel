@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Category extends Model
 {
@@ -51,20 +51,17 @@ class Category extends Model
     }
 
     public static function getCategories() {
-        return DB::getSection('categories');
-    }
-
-    public static function getCategoryById(int $id) {
-        return self::getCategories()[$id];
+        return DB::table('categories')->get();
     }
 
     public static function getCategoryBySlug(string $slug)
     {
-        $categories = self::getCategories();
-        foreach ($categories as $category) {
-            if ($category['slug'] == $slug)
-                return $category;
-        }
-        return [];
+        return DB::table('categories')->where('slug',$slug)->first();
+//        $categories = self::getCategories();
+//        foreach ($categories as $category) {
+//            if ($category->slug == $slug)
+//                return $category;
+//        }
+//        return [];
     }
 }

@@ -1,11 +1,11 @@
 {{--@dump($news)--}}
 <nav class="nav flex-sm-column">
     @forelse ($news as $article)
-    <a class="nav-link {{ $article['is_private']?'disabled':'' }}"
-       href="{{route('news.oneArticle',$article['slug'])}}">
-        {{ $article['title'] }}
+    <a class="nav-link {{ $article->is_private?'disabled':'' }}"
+       href="{{route('news.oneArticle',$article->slug)}}">
+        {{ $article->title }}
         <br>
-        <img src="{{ $article['image'] ?? url('storage/default_article.jpg') }}" alt="Preview image" class="img-preview" >
+        <img src="{{ $article->image ?? url('storage/default_article.jpg') }}" alt="Preview image" class="img-preview" >
     </a>
 @empty
     <h3 class="mt-3">Новости кончились</h3>

@@ -24,7 +24,7 @@ class NewsSeeder extends Seeder
             $name = $faker->unique()->sentence;
             $data[] = [
                 'title'=>$name,
-                'slug'=>Str::slug($name),
+                'slug'=>Str::slug($name, '_'),
                 'body'=>$faker->text,
                 'category_id'=>rand(1,10),
                 'author_id'=>rand(1,10),

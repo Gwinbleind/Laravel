@@ -24,7 +24,7 @@ class CategoriesSeeder extends Seeder
             $name = $faker->unique()->word;
             $data[] = [
                 'name'=>$name,
-                'slug'=>Str::slug($name),
+                'slug'=>Str::slug($name, '_'),
             ];
         }
 

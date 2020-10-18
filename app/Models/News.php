@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Http\Controllers\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class News extends Model
 {
@@ -34,7 +34,7 @@ class News extends Model
     }
 
     public static function getNews() {
-        return DB::getSection('news');
+        return DB::table('news')->get();
     }
 
     public static function getArticleById(int $id)
@@ -44,27 +44,30 @@ class News extends Model
 
     public static function getArticleBySlug(string $slug)
     {
-        $news = self::getNews();
-        foreach ($news as $item) {
-            if ($item['slug'] == $slug) return $item;
-        }
-        return [];
+        return DB::table('news')->where('slug',$slug)->first();
+//        dd($article);
+//        $news = self::getNews();
+//        foreach ($news as $item) {
+//            if ($item['slug'] == $slug) return $item;
+//        }
+//        return [];
     }
 
     public static function getNewsByCategory(int $id)
     {
-        $result = [];
-        $news = self::getNews();
-        foreach ($news as $item) {
-            if ($item['category_id'] == $id) {
-                $result[] = $item;
-            }
-        }
-        return $result;
+        return DB::table('news')->where('category_id',$id)->get();
+//        $result = [];
+//        $news = self::getNews();
+//        foreach ($news as $item) {
+//            if ($item['category_id'] == $id) {
+//                $result[] = $item;
+//            }
+//        }
+//        return $result;
     }
 
     public static function createArticle(array $article)
     {
-        return DB::putItemToSection('news',$article);
+//        return DB::putItemToSection('news',$article);
     }
 }

@@ -24,11 +24,12 @@ class NewsController extends Controller
     public function showNewsByCategory(string $slug)
     {
         $category = Category::getCategoryBySlug($slug);
-        if ($category !== [])
-            return view('News.atCategory')
-                ->with('news',News::getNewsByCategory($category['id']))
-                ->with('category',$category);
-        else return view('404');
+        $news = News::getNewsByCategory($category->id);
+//        if ($news->isNotEmpty())
+        return view('News.atCategory')
+            ->with('news',$news)
+            ->with('category',$category);
+//        else return view('404');
     }
 
     public function showCategories()
