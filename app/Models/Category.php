@@ -57,11 +57,5 @@ class Category extends Model
     public static function getCategoryBySlug(string $slug)
     {
         return DB::table('categories')->where('slug',$slug)->first();
-//        $categories = self::getCategories();
-//        foreach ($categories as $category) {
-//            if ($category->slug == $slug)
-//                return $category;
-//        }
-//        return [];
     }
 }

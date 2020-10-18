@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str as StrL;
 
 class News extends Model
 {
@@ -45,29 +47,29 @@ class News extends Model
     public static function getArticleBySlug(string $slug)
     {
         return DB::table('news')->where('slug',$slug)->first();
-//        dd($article);
-//        $news = self::getNews();
-//        foreach ($news as $item) {
-//            if ($item['slug'] == $slug) return $item;
-//        }
-//        return [];
     }
 
     public static function getNewsByCategory(int $id)
     {
         return DB::table('news')->where('category_id',$id)->get();
-//        $result = [];
-//        $news = self::getNews();
-//        foreach ($news as $item) {
-//            if ($item['category_id'] == $id) {
-//                $result[] = $item;
-//            }
-//        }
-//        return $result;
     }
 
     public static function createArticle(array $article)
     {
-//        return DB::putItemToSection('news',$article);
+        try {
+            $url = null;
+            if (request()->file('image')) {
+                $path = Storage::putFile('public/images',request()->file('image'));
+                $url = Storage::url($path);
+            }
+            $article['image'] = $url;
+            $article['is_private'] = isset($article['is_private']);
+            $article['slug'] = StrL::slug($article['title'],'_');
+            DB::table('news')->insert($article);
+        } catch (\Exception $e) {
+            dump($e);
+            return '';
+        }
+        return $article['slug'];
     }
 }
