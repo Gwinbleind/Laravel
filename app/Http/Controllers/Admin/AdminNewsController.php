@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\News;
 use Illuminate\Http\Request;
 
-class NewsController extends Controller
+class AdminNewsController extends Controller
 {
     public function create(Request $request)
     {

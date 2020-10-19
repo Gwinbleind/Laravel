@@ -10,45 +10,9 @@ class Category extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
         'name', 'slug',
     ];
-
-    private static $categories = [
-        1=>[
-            'id'=>1,
-            'parent_id'=>null,
-            'name'=>'Политика',
-            'slug'=>'politics'
-        ],
-        2=>[
-            'id'=>2,
-            'parent_id'=>null,
-            'name'=>'Культура и Искусство',
-            'slug'=>'culture'
-        ],
-        3=>[
-            'id'=>3,
-            'parent_id'=>null,
-            'name'=>'Наука и Технологии',
-            'slug'=>'science'
-        ],
-        4=>[
-            'id'=>4,
-            'parent_id'=>null,
-            'name'=>'Происшествия',
-            'slug'=>'incidents'
-        ],
-    ];
-
-    public static function getLocalCategories() {
-        return self::$categories;
-    }
 
     public static function getCategories() {
         return DB::table('categories')->get();

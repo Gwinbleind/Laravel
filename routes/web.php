@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\IndexController as IndexController;
-use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+use App\Http\Controllers\Admin\AdminNewsController;
 use App\Http\Controllers\HomeController as HomeController;
 use App\Http\Controllers\NewsController as NewsController;
 use Illuminate\Support\Facades\Route;
