@@ -11,14 +11,14 @@
                 <li class="nav-item {{ request()->routeIs('admin.home')?'active':'' }}">
                     <a class="nav-link" href="{{route('admin.home')}}">Админка</a>
                 </li>
-                <li class="nav-item {{ request()->routeIs('news.all')?'active':'' }}">
-                    <a class="nav-link" href="{{route('news.all')}}">Новости</a>
-                </li>
-                <li class="nav-item {{ request()->routeIs('auth')?'active':'' }}">
-                    <a class="nav-link" href="{{route('auth')}}">Войти</a>
+                <li class="nav-item {{ request()->routeIs('admin.news.index')?'active':'' }}">
+                    <a class="nav-link" href="{{route('admin.news.index')}}">Новости</a>
                 </li>
                 <li class="nav-item {{ request()->routeIs('admin.add')?'active':'' }}">
-                    <a class="nav-link" href="{{route('admin.add')}}">Добавить</a>
+                    <a class="nav-link" href="{{route('admin.news.create')}}">Добавить</a>
+                </li>
+                <li class="nav-item {{ request()->routeIs('auth')?'active':'' }}">
+                    <a class="nav-link disabled" href="{{route('auth')}}">Войти</a>
                 </li>
             </ul>
 {{--            <form class="form-inline mt-2 mt-md-0">--}}

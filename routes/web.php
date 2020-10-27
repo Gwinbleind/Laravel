@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\IndexController as IndexController;
-use App\Http\Controllers\Admin\AdminNewsController;
+use App\Http\Controllers\Admin\News2Controller;
+use App\Http\Controllers\Admin\NewsController as ANewsController;
 use App\Http\Controllers\HomeController as HomeController;
-use App\Http\Controllers\NewsController as NewsController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,35 +18,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/',[HomeController::class,'index'])
-    ->name('home');
+Route::get('/',[HomeController::class,'index'])->name('home');
 
 Route::name('admin.')
     ->prefix('admin')
-    ->namespace('Admin')
+//    ->namespace('Admin')
     ->group(function () {
-        Route::get('/',[IndexController::class,'index'])
-            ->name('home');
-        Route::match(['get','post'],'/add',[AdminNewsController::class,'create'])
-            ->name('add');
-});
+        Route::get('/',[IndexController::class,'index'])->name('home');
+//        Дублер роута 'news.destroy'
+        Route::get('/delete/{news}',[News2Controller::class,'destroy'])->name('news.delete');
+//        Ресурсы странно работают с группами, у них префикс в контроллер добавляется в самое начало namespace, аж до app. Пришлось убрать его вообще
+        Route::resource('news', News2Controller::class);
+    });
 
 Route::name('news.')
     ->prefix('news')
     ->group(function() {
-        Route::get('/',[NewsController::class,'index'])
-            ->name('all');
-        Route::get('/category/{slug}',[NewsController::class,'showNewsByCategory'])
-            ->name('byCategory');
-        Route::get('/category',[NewsController::class,'showCategories'])
-            ->name('categories');
+        Route::get('/',[NewsController::class,'index'])->name('all');
+        Route::get('/category/{slug}',[NewsController::class,'showNewsByCategory'])->name('byCategory');
+        Route::get('/category',[NewsController::class,'showCategories'])->name('categories');
         Route::get('/{slug}',[NewsController::class,'showArticle'])
-            ->where('slug', '[A-Za-z_0-9]+')
-            ->name('oneArticle');
+            ->where('slug', '[A-Za-z_0-9]+')->name('oneArticle');
     });
 
-Route::view('/about', 'about')
-    ->name('about');
+Route::view('/about', 'about')->name('about');
 
 Route::view('/vue','vue')->name('vue');
 Route::view('/test','welcome');

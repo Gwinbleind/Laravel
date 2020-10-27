@@ -10957,3 +10957,11 @@ body {
   border-top-right-radius: 0;
 }
 
+.w-5 {
+  width: 20px;
+}
+
+.h-5 {
+  height: 20px;
+}
+

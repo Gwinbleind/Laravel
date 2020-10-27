@@ -9,4 +9,5 @@
 @section('content')
     <h1 class="mt-5">Горячие новости</h1>
     @include('News.newsBlock')
+    {{ $news->links() }}
 @endsection

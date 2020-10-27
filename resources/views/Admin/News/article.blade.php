@@ -10,6 +10,20 @@
     @isset($article)
         <p class="lead">Новость № {{$article->id}}</p>
         <p class="lead">Категория: {{$article->category()->name}}</p>
+        <form action="{{ route('admin.news.edit',$article) }}">
+            @csrf
+            <button type="submit" class="btn btn-warning">Изменение</button>
+        </form>
+        <form action="{{ route('admin.news.delete',$article) }}">
+            @csrf
+            @method('GET')
+            <button type="submit" class="btn btn-danger">Удаление 2</button>
+        </form>
+        <form action="{{ route('admin.news.destroy',$article) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Удаление</button>
+        </form>
         <img src="{{ $article->image ?? url('storage/default_article.jpg') }}" alt="Preview image">
         <h1 class="mt-5">{{$article->title}}</h1>
         <p class="lead">
