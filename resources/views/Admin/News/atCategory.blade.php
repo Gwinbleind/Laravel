@@ -3,7 +3,7 @@
 @section('title','Новости по категориям')
 
 @section('menu')
-    @include ("menu")
+    @include ("Admin.menu")
 @endsection
 
 @section('content')

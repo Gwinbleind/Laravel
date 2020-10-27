@@ -13,19 +13,16 @@ class News2Controller extends Controller
 {
     public function index()
     {
-        dump('index');
         return view('Admin.News.all')->with('news',News::query()->paginate(10));
     }
 
     public function create()
     {
-        dump('create');
         return view('Admin.News.add')->with('categories',Category::all());
     }
 
     public function store(Request $request)
     {
-        dump('store');
         $article = new News();
         $article->fill($request->all());
         if (request()->file('image')) {
@@ -44,13 +41,11 @@ class News2Controller extends Controller
 
     public function show(News $news)
     {
-        dump('show', $news);
         return view('Admin.News.article')->with('article',$news);
     }
 
     public function edit(News $news)
     {
-        dump('edit', $news);
         return view('admin.news.edit')
             ->with('categories',Category::all())
             ->with('news',$news);
@@ -58,7 +53,6 @@ class News2Controller extends Controller
 
     public function update(Request $request, News $news)
     {
-        dump('update', $request, $news);
         $news->fill($request->all());
         if (request()->file('image')) {
             $path = Storage::putFile('public/images',request()->file('image'));
@@ -75,6 +69,7 @@ class News2Controller extends Controller
 
     public function destroy(News $news)
     {
-        dump('destroy', $news);
+        $news->delete();
+        return redirect()->route('admin.news.index');
     }
 }

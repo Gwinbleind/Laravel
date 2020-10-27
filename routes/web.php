@@ -25,8 +25,6 @@ Route::name('admin.')
 //    ->namespace('Admin')
     ->group(function () {
         Route::get('/',[IndexController::class,'index'])->name('home');
-//        Дублер роута 'news.destroy'
-        Route::get('/delete/{news}',[News2Controller::class,'destroy'])->name('news.delete');
 //        Ресурсы странно работают с группами, у них префикс в контроллер добавляется в самое начало namespace, аж до app. Пришлось убрать его вообще
         Route::resource('news', News2Controller::class);
     });
