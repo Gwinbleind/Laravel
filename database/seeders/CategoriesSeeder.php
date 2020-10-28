@@ -27,10 +27,9 @@ class CategoriesSeeder extends Seeder
                 'slug'=>Str::slug($name, '_'),
             ];
         }
-
         DB::table('categories')->insert($data);
 
 //        Category::factory()->times(10)->create();
-//        TODO: Переделать на фабрику, когда разберемся, чего не хватает
+//        TODO: Переделать на фабрику
     }
 }

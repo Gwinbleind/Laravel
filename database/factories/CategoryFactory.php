@@ -26,8 +26,6 @@ class CategoryFactory extends Factory
         return [
             'name'=>$name,
             'slug'=>Str::slug($name, '_'),
-//            'name'=>$this->faker->unique()->word,
-//            'slug'=>$this->faker->unique()->word,
         ];
     }
 }

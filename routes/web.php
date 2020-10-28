@@ -21,10 +21,8 @@ Route::get('/',[HomeController::class,'index'])->name('home');
 
 Route::name('admin.')
     ->prefix('admin')
-//    ->namespace('Admin')
     ->group(function () {
         Route::get('/',[IndexController::class,'index'])->name('home');
-//        Ресурсы странно работают с группами, у них префикс в контроллер добавляется в самое начало namespace, аж до app. Пришлось убрать его вообще
         Route::resource('news', ANewsController::class);
     });
 

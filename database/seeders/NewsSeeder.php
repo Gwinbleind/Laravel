@@ -17,25 +17,24 @@ class NewsSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Factory::create('ru_RU');
-        $data = [];
-
-        for ($i = 0;$i < 20;$i++) {
-            $name = $faker->unique()->sentence;
-            $data[] = [
-                'title'=>$name,
-                'slug'=>Str::slug($name, '_'),
-                'body'=>$faker->text,
-                'category_id'=>rand(1,10),
-                'author_id'=>rand(1,10),
-                'is_private'=>false,
-                'image'=>null,
-            ];
-        }
-
-        DB::table('news')->insert($data);
-
-//        News::factory()->times(10)->create();
-//        TODO: Переделать на фабрику, когда разберемся, чего не хватает
+//        $faker = Factory::create('ru');
+//        $data = [];
+//
+//        for ($i = 0;$i < 20;$i++) {
+//            $name = $faker->unique()->sentence;
+//            $data[] = [
+//                'title'=>$name,
+//                'slug'=>Str::slug($name, '_'),
+//                'body'=>$faker->text,
+//                'category_id'=>rand(1,10),
+//                'author_id'=>rand(1,10),
+//                'is_private'=>false,
+//                'image'=>null,
+//            ];
+//        }
+//
+//        DB::table('news')->insert($data);
+        News::factory()->times(30)->create();
+//        TODO: Переделал на фабрику
     }
 }

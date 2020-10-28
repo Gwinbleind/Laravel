@@ -34,7 +34,7 @@
             </div>  {{--Body--}}
             <div class="form-group row">
                 <div class="form-check">
-                    <input type="checkbox" class="form-check-input" name="is_private" id="isPrivate"
+                    <input type="checkbox" class="form-check-input" name="is_private" id="isPrivate" value="1"
                     {{ $news->is_private ? 'checked' : '' }}>
                     <label class="form-check-label" for="isPrivate">Приватная</label>
                 </div>
