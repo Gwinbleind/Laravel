@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use phpDocumentor\Reflection\Types\This;
+use Illuminate\Validation\Rule;
 
 class News extends Model
 {
@@ -18,18 +18,36 @@ class News extends Model
         'is_private' => false,
     ];
 
-    public static function rules()
+    public static function rules(News $news)
     {
         $categoryTableName = (new Category)->getTable();
         $userTableName = (new User)->getTable();
         return [
-            'title'=>['required','min:5','max:50'],
+            'title'=>['required','min:5','max:50',Rule::unique('news')->ignore($news)],
             'body'=>['required','min:200'],
             'category_id'=>['required',"exists:{$categoryTableName},id"],
-            'author_id'=>['required',"exists:{$userTableName},id"],
+//            'author_id'=>['required',"exists:{$userTableName},id"],
             'is_private'=>'boolean',
-            'slug'=>['required','min:5','max:50'],
-            'image'=>['file','mime:jpeg,jpg,png,bmp'],
+            'image'=>['file','mimes:jpeg,jpg,png,bmp'],
+        ];
+    }
+
+    public static function attributes()
+    {
+        return [
+            'title'=>'Заголовок новости',
+            'body'=>'Текст новости',
+            'category_id'=>'Категория',
+            'author_id'=>'Автор',
+            'is_private'=>'Приватность',
+            'image'=>'Изображение',
+        ];
+    }
+
+    public static function messages()
+    {
+        return [
+
         ];
     }
 

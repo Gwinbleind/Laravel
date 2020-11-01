@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SaveNewsRequest;
 use App\Models\Category;
 use App\Models\News;
 use Illuminate\Http\Request;
@@ -18,14 +19,23 @@ class NewsController extends Controller
 
     public function create()
     {
-        return view('Admin.News.add')->with('categories',Category::all());
+        $news = new News();
+//        Comment: Можно ли облагородить нижеследующее? Захотел избавиться от дублирования формы в добавлении и изменении, вынес ее в шаблон. Только значения по умолчанию инпутов у них разные - в добавлении используется хелпер old(), в изменении модель News. Перенес данные из хелпера в модель. Есть ли вообще смысл так изгаляться ради уменьшения шаблонов?
+        $news->title = old('title') ?? '';
+        $news->category_id = old('category_id') ?? '';
+        $news->body = old('body') ?? '';
+        $news->is_private = old('is_private') ?? '';
+        return view('Admin.News.add')->with('categories',Category::all())
+            ->with('news',$news);
     }
 
-    public function store(Request $request)
+    public function store(SaveNewsRequest $request)
     {
         $article = new News();
         $article->fill($request->all());
-        $this->validate($request,News::rules());
+//        $request->validate(News::rules($article),News::messages(),News::attributes());
+//        $request->validate($request->rules($news),$request->messages(),$request->attributes());
+        $request->validated();
 
         if (request()->file('image')) {
             $path = Storage::putFile('public/images',request()->file('image'));
@@ -33,11 +43,8 @@ class NewsController extends Controller
         }
         $article->is_private = isset($article->is_private);
         $article->slug = StrL::slug($article->title,'_');
-        try {
-            $article->save();
-        } catch (\Exception $e) {
-            return back()->withInput();
-        }
+        $article->save();
+
         return redirect()->route('news.oneArticle',$article->slug);
     }
 
@@ -56,16 +63,18 @@ class NewsController extends Controller
     public function update(Request $request, News $news)
     {
         $news->fill($request->all());
+        $request->validate(News::rules($news),News::messages(),News::attributes());
+//        TODO: Подумать, как сделать валидацию через свой request вместо модели
+//        $request->validate($request->rules($news),$request->messages(),$request->attributes());
+//        $request->validated();
+
         if (request()->file('image')) {
             $path = Storage::putFile('public/images',request()->file('image'));
             $news->image = Storage::url($path);
         }
         $news->is_private = $request->input('is_private') !== null;
-        try {
-            $news->save();
-        } catch (\Exception $e) {
-            return back()->withInput();
-        }
+        $news->save();
+
         return redirect()->route('news.oneArticle',$news->slug);
     }
 

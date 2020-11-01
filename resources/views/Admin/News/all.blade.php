@@ -8,6 +8,6 @@
 
 @section('content')
     <h1 class="mt-5">Редактирование новостей</h1>
-    @include('Admin.News.newsBlock')
+    @include('Admin.News.Subviews.newsBlock')
     {{ $news->links() }}
 @endsection
