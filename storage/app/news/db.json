@@ -1,0 +1,57 @@
+{
+    "news": {
+        "1": {
+            "id": "1",
+            "title": "Путин в Африке",
+            "category_id": 1,
+            "is_private": false,
+            "slug": "putin_at_africa",
+            "body": "Представьте себе, Путин в Африке!",
+            "image": null
+        },
+        "2": {
+            "id": "2",
+            "title": "Новая картина на миллиард",
+            "category_id": 2,
+            "is_private": false,
+            "slug": "new_art_for_milliard",
+            "body": "Кто-то снова купил картину за миллиард!",
+            "image": null
+        },
+        "3": {
+            "title": "Тестируем добавление картинки",
+            "category_id": "3",
+            "body": "Картинка отображается",
+            "image": "\/storage\/images\/WtcuSmmWTelV6HFsTttAeoErzGB3ior1Qwh68cEx.png",
+            "is_private": false,
+            "slug": "testiruem_dobavlenie_kartinki",
+            "id": 3
+        }
+    },
+    "categories": {
+        "1": {
+            "id": 1,
+            "parent_id": null,
+            "name": "Политика",
+            "slug": "politics"
+        },
+        "2": {
+            "id": 2,
+            "parent_id": null,
+            "name": "Культура и Искусство",
+            "slug": "culture"
+        },
+        "3": {
+            "id": 3,
+            "parent_id": null,
+            "name": "Наука и Технологии",
+            "slug": "science"
+        },
+        "4": {
+            "id": 4,
+            "parent_id": null,
+            "name": "Происшествия",
+            "slug": "incidents"
+        }
+    }
+}
